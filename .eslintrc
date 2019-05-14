@@ -1,0 +1,41 @@
+{
+    "extends": ["eslint:recommended", "prettier"],
+    "plugins": [
+        "prettier"
+    ],
+    "env": {
+      "node": true,
+      "es6": true,
+      "jest": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2018
+    },
+    "rules": {
+      "prettier/prettier": ["error", {"singleQuote": true, "parser": "flow"}],
+      "no-console": 1,
+      "indent": [
+        "error",
+        2
+      ],
+      "camelcase": [
+        "error",
+        {
+          "properties": "never"
+        }
+      ],
+      "block-spacing": "error",
+      "max-lines": [
+        "warn",
+        150
+      ],
+      "max-depth": 1,
+      "no-nested-ternary": "error",
+      "no-unneeded-ternary": "error",
+      "constructor-super": "error",
+      "no-this-before-super": "error",
+      "no-var": "warn",
+      "prefer-template": "warn",
+      "require-yield": 0
+    }
+  }
