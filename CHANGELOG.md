@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/danwkennedy/arango-datasouce/compare/0.1.0...0.2.0) (2019-05-14)
+
+
+### Features
+
+* **npm:** add an npmignore file ([e5c68a3](https://github.com/danwkennedy/arango-datasouce/commit/e5c68a3))
+
+
+
 # 0.1.0 (2019-05-14)
 
 
