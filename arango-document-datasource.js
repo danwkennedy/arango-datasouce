@@ -63,7 +63,7 @@ class ArangoDocumentDataSource extends DataSource {
    */
   async loadKeys(keys) {
     const cursor = await this.db.query(aql`RETURN DOCUMENT(${keys})`);
-    const nodes = await cursor.all();
+    const [nodes] = await cursor.all();
 
     return keys.map(key => {
       const node = nodes.find(node => node._id === key);

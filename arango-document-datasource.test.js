@@ -45,7 +45,7 @@ describe('ArangDocumentDataSource', () => {
 function createDb(queryResults) {
   return {
     query: jest.fn().mockResolvedValue({
-      all: () => queryResults
+      all: () => [queryResults]
     })
   };
 }
