@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/danwkennedy/arango-datasouce/compare/0.2.0...0.2.1) (2019-05-27)
+
+
+### Bug Fixes
+
+* **document datasource:** unroll the array returned by the cursor. ([b495423](https://github.com/danwkennedy/arango-datasouce/commit/b495423))
+
+
+
 # [0.2.0](https://github.com/danwkennedy/arango-datasouce/compare/0.1.0...0.2.0) (2019-05-14)
 
 
