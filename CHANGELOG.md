@@ -1,3 +1,13 @@
+# [0.3.0](https://github.com/danwkennedy/arango-datasouce/compare/0.2.1...0.3.0) (2019-05-29)
+
+
+### Features
+
+* **DocumentManager:** add a document manager ([d8d106b](https://github.com/danwkennedy/arango-datasouce/commit/d8d106b))
+* **EdgeManager:** add an edge manager ([8b8078a](https://github.com/danwkennedy/arango-datasouce/commit/8b8078a))
+
+
+
 ## [0.2.1](https://github.com/danwkennedy/arango-datasouce/compare/0.2.0...0.2.1) (2019-05-27)
 
 
