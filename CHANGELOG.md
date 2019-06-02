@@ -1,3 +1,7 @@
+# [0.4.0](https://github.com/danwkennedy/arango-datasouce/compare/0.3.0...0.4.0) (2019-06-02)
+
+
+
 # [0.3.0](https://github.com/danwkennedy/arango-datasouce/compare/0.2.1...0.3.0) (2019-05-29)
 
 
