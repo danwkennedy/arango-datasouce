@@ -1,3 +1,12 @@
+# [0.5.0](https://github.com/danwkennedy/arango-datasouce/compare/0.4.0...0.5.0) (2019-06-14)
+
+
+### Features
+
+* **edge manager:** add bulk operations ([b698949](https://github.com/danwkennedy/arango-datasouce/commit/b698949))
+
+
+
 # [0.4.0](https://github.com/danwkennedy/arango-datasouce/compare/0.3.0...0.4.0) (2019-06-02)
 
 
