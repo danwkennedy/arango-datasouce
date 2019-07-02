@@ -1,3 +1,12 @@
+## [0.6.1](https://github.com/danwkennedy/arango-datasouce/compare/0.6.0...0.6.1) (2019-07-02)
+
+
+### Bug Fixes
+
+* **document datasource:** handle the correct return type for the AQL query ([69204fb](https://github.com/danwkennedy/arango-datasouce/commit/69204fb))
+
+
+
 # [0.6.0](https://github.com/danwkennedy/arango-datasouce/compare/0.5.0...0.6.0) (2019-07-02)
 
 
