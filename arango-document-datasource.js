@@ -29,6 +29,9 @@ class ArangoDocumentDataSource extends DataSource {
    */
   initialize() {
     this.dataloader = new DataLoader(keys => this.loadKeys(keys));
+    this.existsDataloader = new DataLoader(keys =>
+      this.checkForExistence(keys)
+    );
   }
 
   /**
@@ -54,6 +57,28 @@ class ArangoDocumentDataSource extends DataSource {
   }
 
   /**
+   * Returns whether a given document exists
+   *
+   * @param {String} id The id of the document
+   * @returns {Boolean} Whether or not the document exists
+   * @memberof ArangoDocumentDataSource
+   */
+  async exists(id) {
+    return this.existsDataloader.load(id);
+  }
+
+  /**
+   * Returns whether a given list of documents exist
+   *
+   * @param {String[]} ids A list of document ids to check
+   * @returns {Boolean[]} A corresponding list of booleans. The order matches the ids list.
+   * @memberof ArangoDocumentDataSource
+   */
+  async manyExist(ids) {
+    return this.existsDataloader.loadMany(ids);
+  }
+
+  /**
    * Queries the database for the given keys.
    *
    * @param {string[]} keys The keys to qeury for
@@ -74,6 +99,28 @@ class ArangoDocumentDataSource extends DataSource {
 
       return node;
     });
+  }
+
+  /**
+   * Checks whether the given keys exist
+   *
+   * @param {String[]} keys A list of keys to check for
+   * @returns {Boolean[]} The corresponding list of booleans. The order matches the keys list.
+   * @memberof ArangoDocumentDataSource
+   */
+  async checkForExistence(keys) {
+    const cursor = await this.db.query(aql`
+      FOR key in ${keys}
+        RETURN (DOCUMENT(key))._id
+    `);
+    const [nodes] = await cursor.all();
+
+    const output = [];
+    for (const [index, id] of keys.entries()) {
+      output[index] = nodes[index] === id;
+    }
+
+    return output;
   }
 }
 

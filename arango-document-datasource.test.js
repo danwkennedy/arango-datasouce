@@ -40,6 +40,82 @@ describe('ArangDocumentDataSource', () => {
     expect(docs).toEqual(results.reverse());
     expect(db.query).toHaveBeenCalledTimes(1);
   });
+
+  describe(`exists`, () => {
+    test(`it returns true if a document exists`, async () => {
+      const results = ['123'];
+      const db = createDb(results);
+      const datasource = new ArangoDocumentDataSource(db);
+      datasource.initialize();
+
+      const exists = await datasource.exists('123');
+
+      expect(exists).toBe(true);
+    });
+
+    test(`it caches the results`, async () => {
+      const results = ['123'];
+      const db = createDb(results);
+      const datasource = new ArangoDocumentDataSource(db);
+      datasource.initialize();
+
+      await datasource.exists('123');
+      await datasource.exists('123');
+
+      expect(db.query).toHaveBeenCalledTimes(1);
+    });
+
+    test(`it batches the calls`, async () => {
+      const results = ['123'];
+      const db = createDb(results);
+      const datasource = new ArangoDocumentDataSource(db);
+      datasource.initialize();
+
+      await Promise.all([datasource.exists('123'), datasource.exists('123')]);
+
+      expect(db.query).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe(`manyExist`, () => {
+    test(`it returns a list of document existence`, async () => {
+      const results = ['123'];
+      const db = createDb(results);
+      const datasource = new ArangoDocumentDataSource(db);
+      datasource.initialize();
+
+      const exists = await datasource.manyExist(['123', '456']);
+
+      expect(exists[0]).toBe(true);
+      expect(exists[1]).toBe(false);
+    });
+
+    test(`it caches the results`, async () => {
+      const results = ['123'];
+      const db = createDb(results);
+      const datasource = new ArangoDocumentDataSource(db);
+      datasource.initialize();
+
+      await datasource.manyExist(['123']);
+      await datasource.manyExist(['123']);
+
+      expect(db.query).toHaveBeenCalledTimes(1);
+    });
+
+    test(`it batches the calls`, async () => {
+      const results = ['123'];
+      const db = createDb(results);
+      const datasource = new ArangoDocumentDataSource(db);
+      datasource.initialize();
+
+      await Promise.all([
+        datasource.manyExist(['123']),
+        datasource.manyExist(['123'])
+      ]);
+
+      expect(db.query).toHaveBeenCalledTimes(1);
+    });
+  });
 });
 
 function createDb(queryResults) {
