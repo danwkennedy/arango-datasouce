@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/danwkennedy/arango-datasouce/compare/0.5.0...0.6.0) (2019-07-02)
+
+
+### Features
+
+* **document datasource:** add exists and manyExists calls ([9eda7d4](https://github.com/danwkennedy/arango-datasouce/commit/9eda7d4))
+
+
+
 # [0.5.0](https://github.com/danwkennedy/arango-datasouce/compare/0.4.0...0.5.0) (2019-06-14)
 
 
