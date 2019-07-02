@@ -44,7 +44,7 @@ describe('ArangDocumentDataSource', () => {
   describe(`exists`, () => {
     test(`it returns true if a document exists`, async () => {
       const results = ['123'];
-      const db = createDb(results);
+      const db = createExistsDb(results);
       const datasource = new ArangoDocumentDataSource(db);
       datasource.initialize();
 
@@ -55,7 +55,7 @@ describe('ArangDocumentDataSource', () => {
 
     test(`it caches the results`, async () => {
       const results = ['123'];
-      const db = createDb(results);
+      const db = createExistsDb(results);
       const datasource = new ArangoDocumentDataSource(db);
       datasource.initialize();
 
@@ -67,7 +67,7 @@ describe('ArangDocumentDataSource', () => {
 
     test(`it batches the calls`, async () => {
       const results = ['123'];
-      const db = createDb(results);
+      const db = createExistsDb(results);
       const datasource = new ArangoDocumentDataSource(db);
       datasource.initialize();
 
@@ -80,7 +80,7 @@ describe('ArangDocumentDataSource', () => {
   describe(`manyExist`, () => {
     test(`it returns a list of document existence`, async () => {
       const results = ['123'];
-      const db = createDb(results);
+      const db = createExistsDb(results);
       const datasource = new ArangoDocumentDataSource(db);
       datasource.initialize();
 
@@ -92,7 +92,7 @@ describe('ArangDocumentDataSource', () => {
 
     test(`it caches the results`, async () => {
       const results = ['123'];
-      const db = createDb(results);
+      const db = createExistsDb(results);
       const datasource = new ArangoDocumentDataSource(db);
       datasource.initialize();
 
@@ -104,7 +104,7 @@ describe('ArangDocumentDataSource', () => {
 
     test(`it batches the calls`, async () => {
       const results = ['123'];
-      const db = createDb(results);
+      const db = createExistsDb(results);
       const datasource = new ArangoDocumentDataSource(db);
       datasource.initialize();
 
@@ -122,6 +122,14 @@ function createDb(queryResults) {
   return {
     query: jest.fn().mockResolvedValue({
       all: () => [queryResults]
+    })
+  };
+}
+
+function createExistsDb(queryResults) {
+  return {
+    query: jest.fn().mockResolvedValue({
+      all: () => queryResults
     })
   };
 }

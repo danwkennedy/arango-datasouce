@@ -113,7 +113,7 @@ class ArangoDocumentDataSource extends DataSource {
       FOR key in ${keys}
         RETURN (DOCUMENT(key))._id
     `);
-    const [nodes] = await cursor.all();
+    const nodes = await cursor.all();
 
     const output = [];
     for (const [index, id] of keys.entries()) {
