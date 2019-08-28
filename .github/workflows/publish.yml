@@ -1,9 +1,6 @@
 name: Publish Package
 
-on:
-  release:
-    branches:
-      - master
+on: [release]
 
 jobs:
   test:
