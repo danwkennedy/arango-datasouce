@@ -1,6 +1,6 @@
 {
   "name": "@danwkennedy/arango-datasource",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "An implentation of Apollo's datasources for ArangoDb",
   "main": "index.js",
   "scripts": {
