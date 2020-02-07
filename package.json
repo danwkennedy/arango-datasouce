@@ -27,7 +27,7 @@
   "dependencies": {
     "apollo-datasource": "^0.7.0",
     "arangojs": "^6.10.0",
-    "dataloader": "^1.4.0",
+    "dataloader": "^2.0.0",
     "object-hash": "^2.0.1"
   },
   "devDependencies": {
