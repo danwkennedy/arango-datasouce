@@ -37,6 +37,6 @@
     "eslint-plugin-prettier": "^3.1.0",
     "git-hooks": "^1.1.10",
     "jest": "^25.1.0",
-    "prettier": "^1.17.1"
+    "prettier": "^2.0.4"
   }
 }
