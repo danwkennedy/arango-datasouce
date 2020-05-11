@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "conventional-changelog-cli": "^2.0.21",
-    "eslint": "^6.0.0",
+    "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "git-hooks": "^1.1.10",
