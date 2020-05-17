@@ -1,3 +1,17 @@
+# [0.7.0](https://github.com/danwkennedy/arango-datasouce/compare/0.6.4...0.7.0) (2020-05-17)
+
+
+### Features
+
+* **dataloader:** bump dataloader to 2.0.0 ([5f24845](https://github.com/danwkennedy/arango-datasouce/commit/5f248451ec39958ba57306d02050d955f4519217))
+
+
+### BREAKING CHANGES
+
+* **dataloader:** since Dataloader's implementation of LoadMany() has changed, the same behavior changes can happen here.
+
+
+
 ## [0.6.4](https://github.com/danwkennedy/arango-datasouce/compare/0.6.3...0.6.4) (2019-08-28)
 
 
