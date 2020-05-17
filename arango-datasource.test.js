@@ -26,7 +26,7 @@ describe('ArangDataSource', () => {
     const key = hash(query);
     const db = createDb(result);
     const config = createConfig({
-      [key]: result
+      [key]: result,
     });
 
     const datasource = new ArangoDataSource(db);
@@ -85,18 +85,18 @@ describe('ArangDataSource', () => {
 function createDb(queryResults) {
   return {
     query: jest.fn().mockResolvedValue({
-      all: () => queryResults
-    })
+      all: () => queryResults,
+    }),
   };
 }
 
 function createConfig(cache = {}) {
   return {
     cache: {
-      get: jest.fn().mockImplementation(async key => cache[key]),
+      get: jest.fn().mockImplementation(async (key) => cache[key]),
       set: jest
         .fn()
-        .mockImplementation(async (key, result) => (cache[key] = result))
-    }
+        .mockImplementation(async (key, result) => (cache[key] = result)),
+    },
   };
 }

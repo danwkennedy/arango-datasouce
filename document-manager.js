@@ -26,7 +26,7 @@ class DocumentManager extends DataSource {
    */
   async create(input) {
     const { new: document } = await this.collection.save(input, {
-      returnNew: true
+      returnNew: true,
     });
 
     return { new: document };
@@ -43,12 +43,12 @@ class DocumentManager extends DataSource {
   async replace(id, input) {
     const results = await this.collection.replace(id, input, {
       returnNew: true,
-      returnOld: true
+      returnOld: true,
     });
 
     return {
       new: results.new,
-      old: results.old
+      old: results.old,
     };
   }
 
@@ -67,12 +67,12 @@ class DocumentManager extends DataSource {
       keepNull,
       mergeObjects,
       returnNew: true,
-      returnOld: true
+      returnOld: true,
     });
 
     return {
       new: results.new,
-      old: results.old
+      old: results.old,
     };
   }
 
@@ -85,12 +85,12 @@ class DocumentManager extends DataSource {
    */
   async remove(id) {
     const { old: document } = await this.collection.remove(id, {
-      returnOld: true
+      returnOld: true,
     });
     return { old: document };
   }
 }
 
 module.exports = {
-  DocumentManager: DocumentManager
+  DocumentManager: DocumentManager,
 };

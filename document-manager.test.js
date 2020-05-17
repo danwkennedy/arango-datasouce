@@ -32,7 +32,7 @@ describe(`DocumentManager`, () => {
     expect(output).toEqual({ new: doc });
     expect(collectionMock.save).toHaveBeenCalledTimes(1);
     expect(collectionMock.save).toHaveBeenCalledWith(doc, {
-      returnNew: true
+      returnNew: true,
     });
   });
 
@@ -46,7 +46,7 @@ describe(`DocumentManager`, () => {
     expect(collectionMock.replace).toHaveBeenCalledTimes(1);
     expect(collectionMock.replace).toHaveBeenCalledWith('123', newDoc, {
       returnNew: true,
-      returnOld: true
+      returnOld: true,
     });
   });
 
@@ -62,7 +62,7 @@ describe(`DocumentManager`, () => {
       returnNew: true,
       returnOld: true,
       mergeObjects: false,
-      keepNull: false
+      keepNull: false,
     });
   });
 
@@ -74,7 +74,7 @@ describe(`DocumentManager`, () => {
     expect(output).toEqual({ old: doc });
     expect(collectionMock.remove).toHaveBeenCalledTimes(1);
     expect(collectionMock.remove).toHaveBeenCalledWith('123', {
-      returnOld: true
+      returnOld: true,
     });
   });
 });

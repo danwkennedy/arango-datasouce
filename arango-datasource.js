@@ -98,5 +98,5 @@ class ArangoDataSource extends DataSource {
 }
 
 module.exports = {
-  ArangoDataSource: ArangoDataSource
+  ArangoDataSource: ArangoDataSource,
 };

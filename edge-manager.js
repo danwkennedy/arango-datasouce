@@ -31,7 +31,7 @@ class EdgeManager extends DataSource {
    */
   async create(from, to, properties = {}) {
     const { new: edge } = await this.collection.save(properties, from, to, {
-      returnNew: true
+      returnNew: true,
     });
     return { new: edge };
   }
@@ -47,10 +47,10 @@ class EdgeManager extends DataSource {
    * @memberof EdgeManager
    */
   async createOneToMany(fromId, toIds, getProperties = () => ({}), opts = {}) {
-    const edges = toIds.map(toId => ({
+    const edges = toIds.map((toId) => ({
       _from: fromId,
       _to: toId,
-      ...getProperties(fromId, toId)
+      ...getProperties(fromId, toId),
     }));
 
     return this.createMany(edges, opts);
@@ -67,10 +67,10 @@ class EdgeManager extends DataSource {
    * @memberof EdgeManager
    */
   async createManyToOne(fromIds, toId, getProperties = () => ({}), opts = {}) {
-    const edges = fromIds.map(fromId => ({
+    const edges = fromIds.map((fromId) => ({
       _from: fromId,
       _to: toId,
-      ...getProperties(fromId, toId)
+      ...getProperties(fromId, toId),
     }));
     return this.createMany(edges, opts);
   }
@@ -141,5 +141,5 @@ class EdgeManager extends DataSource {
 }
 
 module.exports = {
-  EdgeManager: EdgeManager
+  EdgeManager: EdgeManager,
 };

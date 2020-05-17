@@ -42,7 +42,7 @@ describe(`EdgeManager`, () => {
       expect(output).toEqual({ new: doc });
       expect(collectionMock.save).toHaveBeenCalledTimes(1);
       expect(collectionMock.save).toHaveBeenCalledWith(properties, from, to, {
-        returnNew: true
+        returnNew: true,
       });
     });
   });

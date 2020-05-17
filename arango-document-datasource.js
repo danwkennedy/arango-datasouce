@@ -28,8 +28,8 @@ class ArangoDocumentDataSource extends DataSource {
    * @memberof ArangoDocumentDataSource
    */
   initialize() {
-    this.dataloader = new DataLoader(keys => this.loadKeys(keys));
-    this.existsDataloader = new DataLoader(keys =>
+    this.dataloader = new DataLoader((keys) => this.loadKeys(keys));
+    this.existsDataloader = new DataLoader((keys) =>
       this.checkForExistence(keys)
     );
   }
@@ -47,9 +47,10 @@ class ArangoDocumentDataSource extends DataSource {
 
   /**
    * Gets several Documents at once by their _id
+   * Note: if a key does not exist, null will be returned
    *
    * @param {string[]} ids The _ids to query for
-   * @returns {any[]} The corresponding Documents. In the order their Ids were specified in the ids array
+   * @returns {object|Error[]} The corresponding Documents. In the order their Ids were specified in the ids array.
    * @memberof ArangoDocumentDataSource
    */
   async getMany(ids) {
@@ -81,7 +82,7 @@ class ArangoDocumentDataSource extends DataSource {
   /**
    * Queries the database for the given keys.
    *
-   * @param {string[]} keys The keys to qeury for
+   * @param {string[]} keys The keys to query for
    * @private
    * @returns {*[]} The corresponding Documents. In the order their Ids were specified in the ids array
    * @memberof ArangoDocumentDataSource
@@ -90,8 +91,8 @@ class ArangoDocumentDataSource extends DataSource {
     const cursor = await this.db.query(aql`RETURN DOCUMENT(${keys})`);
     const [nodes] = await cursor.all();
 
-    return keys.map(key => {
-      const node = nodes.find(node => node._id === key);
+    return keys.map((key) => {
+      const node = nodes.find((node) => node._id === key);
 
       if (node) {
         node.id = node._id;
@@ -125,5 +126,5 @@ class ArangoDocumentDataSource extends DataSource {
 }
 
 module.exports = {
-  ArangoDocumentDataSource: ArangoDocumentDataSource
+  ArangoDocumentDataSource: ArangoDocumentDataSource,
 };

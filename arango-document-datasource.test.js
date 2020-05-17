@@ -9,7 +9,7 @@ describe('ArangDocumentDataSource', () => {
 
     const docs = await Promise.all([
       datasource.get('123'),
-      datasource.get('456')
+      datasource.get('456'),
     ]);
 
     expect(docs).toEqual(results);
@@ -110,7 +110,7 @@ describe('ArangDocumentDataSource', () => {
 
       await Promise.all([
         datasource.manyExist(['123']),
-        datasource.manyExist(['123'])
+        datasource.manyExist(['123']),
       ]);
 
       expect(db.query).toHaveBeenCalledTimes(1);
@@ -121,15 +121,15 @@ describe('ArangDocumentDataSource', () => {
 function createDb(queryResults) {
   return {
     query: jest.fn().mockResolvedValue({
-      all: () => [queryResults]
-    })
+      all: () => [queryResults],
+    }),
   };
 }
 
 function createExistsDb(queryResults) {
   return {
     query: jest.fn().mockResolvedValue({
-      all: () => queryResults
-    })
+      all: () => queryResults,
+    }),
   };
 }
