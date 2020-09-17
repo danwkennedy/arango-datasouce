@@ -32,16 +32,16 @@ describe(`EdgeManager`, () => {
 
   describe(`EdgeManager.create`, () => {
     test(`it calls collection.save()`, async () => {
-      const doc = { name: 'abc' };
       const from = 'abc';
       const to = 'xyz';
       const properties = { test: true };
+      const doc = { _from: from, _to: to, ...properties };
       collectionMock.save.mockResolvedValue({ new: doc });
 
       const output = await manager.create(from, to, properties);
       expect(output).toEqual({ new: doc });
       expect(collectionMock.save).toHaveBeenCalledTimes(1);
-      expect(collectionMock.save).toHaveBeenCalledWith(properties, from, to, {
+      expect(collectionMock.save).toHaveBeenCalledWith(doc, {
         returnNew: true,
       });
     });

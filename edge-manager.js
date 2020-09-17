@@ -11,7 +11,7 @@ class EdgeManager extends DataSource {
   /**
    * Creates an instance of EdgeManager.
    * @param {Database} db An instance of an ArangoDb Database
-   * @param {EdgeCollection} collection An instance of an ArangoDb EdgeCollection
+   * @param {Collection} collection An instance of an ArangoDb Collection
    * @memberof EdgeManager
    */
   constructor(db, collection) {
@@ -30,9 +30,12 @@ class EdgeManager extends DataSource {
    * @memberof EdgeManager
    */
   async create(from, to, properties = {}) {
-    const { new: edge } = await this.collection.save(properties, from, to, {
-      returnNew: true,
-    });
+    const { new: edge } = await this.collection.save(
+      { _from: from, _to: to, ...properties },
+      {
+        returnNew: true,
+      }
+    );
     return { new: edge };
   }
 
