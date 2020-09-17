@@ -1,3 +1,18 @@
+# [0.8.0](https://github.com/danwkennedy/arango-datasouce/compare/0.7.0...0.8.0) (2020-09-17)
+
+
+### Features
+
+* **arangojs:** upgrade to arangojs 7.0.1 ([ae3c8ff](https://github.com/danwkennedy/arango-datasouce/commit/ae3c8ff01c7b5fd10fcd5221d08049d6bb4b3e8f))
+* **readme:** document how to use the package ([70fccf0](https://github.com/danwkennedy/arango-datasouce/commit/70fccf0bcb2538afaa13078532c5d40c5c4fde2a))
+
+
+### BREAKING CHANGES
+
+* **arangojs:** arangojs 7+ has quite a few breaking changes. We've addressed the issues that look like they need to be addressed but more testing is likely necessary to make sure.
+
+
+
 # [0.7.0](https://github.com/danwkennedy/arango-datasouce/compare/0.6.4...0.7.0) (2020-05-17)
 
 
