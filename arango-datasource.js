@@ -81,7 +81,15 @@ class ArangoDataSource extends DataSource {
    */
   async queryCached(query) {
     const key = this.getCacheKeyForQuery(query);
-    return this.cache.get(key);
+    let result =  await this.cache.get(key);
+    if(result?.length) {
+      try {
+        result = JSON.parse(result);
+      } catch (error) {
+        // Dont handle error 
+      }
+    }
+    return result
   }
 
   /**
@@ -93,7 +101,8 @@ class ArangoDataSource extends DataSource {
    */
   async addToCache(query, result) {
     const key = this.getCacheKeyForQuery(query);
-    await this.cache.set(key, result);
+    const value = typeof result === 'object'? JSON.stringify(result) : result; 
+    await this.cache.set(key, value);
   }
 }
 
